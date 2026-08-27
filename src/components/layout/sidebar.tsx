@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import {
@@ -20,6 +21,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ZURICH_LOGO_PATH } from "@/lib/crm-logos";
 import { useAppStore } from "@/stores/app-store";
 import { useEnterpriseStore } from "@/stores/enterprise-store";
 import { Button } from "@/components/ui/button";
@@ -54,17 +56,28 @@ export function Sidebar() {
         collapsed ? "w-[72px]" : "w-[260px]"
       )}
     >
-      <div className={cn("flex h-16 items-center border-b border-white/10 px-4", collapsed ? "justify-center" : "gap-3")}>
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#0066CC] text-sm font-bold tracking-tight">
-          ZL
-        </div>
+      <Link
+        href="/dashboard"
+        className={cn(
+          "flex h-16 items-center border-b border-white/10 px-4 transition-colors hover:bg-white/5",
+          collapsed ? "justify-center" : "gap-3"
+        )}
+      >
+        <Image
+          src={ZURICH_LOGO_PATH}
+          alt="Zurich"
+          width={36}
+          height={36}
+          className="h-9 w-9 shrink-0 rounded-lg object-contain"
+          priority
+        />
         {!collapsed && (
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold leading-tight">Zurich Lead</p>
             <p className="truncate text-[11px] text-white/60">Intelligence Platform</p>
           </div>
         )}
-      </div>
+      </Link>
 
       <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
         {NAV.map((item) => {

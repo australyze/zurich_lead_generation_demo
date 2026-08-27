@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { useAppStore } from "@/stores/app-store";
+import { CRM_LOGO_PATHS } from "@/lib/crm-logos";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CrmStatusBadge } from "@/components/shared/status-badges";
@@ -14,15 +16,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
-const ICONS: Record<string, string> = {
-  hubspot: "HS",
-  salesforce: "SF",
-  monday: "MO",
-  dynamics: "MD",
-  pipedrive: "PD",
-  zoho: "ZO",
-};
 
 export default function CrmPage() {
   const integrations = useAppStore((s) => s.crmIntegrations);
@@ -59,9 +52,21 @@ export default function CrmPage() {
                 <CardHeader>
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EAF4FF] text-sm font-bold text-[#0066CC]">
-                        {ICONS[crm.id] ?? "CR"}
-                      </div>
+                      {CRM_LOGO_PATHS[crm.id] ? (
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e2e8f0] bg-white p-1.5">
+                          <Image
+                            src={CRM_LOGO_PATHS[crm.id]}
+                            alt={crm.name}
+                            width={40}
+                            height={40}
+                            className="h-full w-full object-contain"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EAF4FF] text-sm font-bold text-[#0066CC]">
+                          CR
+                        </div>
+                      )}
                       <div>
                         <CardTitle className="text-base">{crm.name}</CardTitle>
                         <div className="mt-1">
@@ -89,7 +94,20 @@ export default function CrmPage() {
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle>Solicitar {crm.name}</DialogTitle>
+                        <div className="flex items-center gap-3">
+                          {CRM_LOGO_PATHS[crm.id] && (
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#e2e8f0] bg-white p-1">
+                              <Image
+                                src={CRM_LOGO_PATHS[crm.id]}
+                                alt={crm.name}
+                                width={32}
+                                height={32}
+                                className="h-full w-full object-contain"
+                              />
+                            </div>
+                          )}
+                          <DialogTitle>Solicitar {crm.name}</DialogTitle>
+                        </div>
                         <DialogDescription>
                           Esta es una demo visual. No se realizará una conexión real con {crm.name}.
                           Su solicitud quedará registrada en el estado local de la aplicación.
