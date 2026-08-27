@@ -22,8 +22,6 @@ export type InstantlyStatus =
 
 export type CrmStatus = "conectado" | "desconectado" | "proximamente";
 
-export type MarketplaceStatus = "disponible" | "proximamente" | "solicitar";
-
 export type CommercialPriority = "alta" | "media" | "baja";
 
 export interface Lead {
@@ -117,14 +115,6 @@ export interface CrmIntegration {
   name: string;
   status: CrmStatus;
   description: string;
-}
-
-export interface MarketplaceItem {
-  id: string;
-  name: string;
-  category: "CRM" | "Enriquecimiento" | "Email" | "Automatización" | "Datos" | "IA";
-  description: string;
-  status: MarketplaceStatus;
 }
 
 export interface ProspectingJob {

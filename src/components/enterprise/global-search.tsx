@@ -49,7 +49,7 @@ export function GlobalSearch() {
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar leads, campañas, empresas, integraciones..."
+            placeholder="Buscar leads, campañas, empresas..."
             className="border-0 shadow-none focus-visible:ring-0 h-12"
           />
         </div>

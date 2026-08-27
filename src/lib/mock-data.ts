@@ -6,7 +6,6 @@ import type {
   InstantlyCampaign,
   KpiStats,
   Lead,
-  MarketplaceItem,
 } from "./types";
 
 const FIRST_NAMES = [
@@ -536,93 +535,6 @@ export const CRM_INTEGRATIONS: CrmIntegration[] = [
     name: "Zoho CRM",
     status: "proximamente",
     description: "Sincronización bidireccional con Zoho CRM en roadmap Q4.",
-  },
-];
-
-export const MARKETPLACE_ITEMS: MarketplaceItem[] = [
-  {
-    id: "mkt-hubspot",
-    name: "HubSpot Sync",
-    category: "CRM",
-    description: "Sincronización bidireccional de contactos y deals.",
-    status: "disponible",
-  },
-  {
-    id: "mkt-sf",
-    name: "Salesforce Connector",
-    category: "CRM",
-    description: "Push de leads enriquecidos a Salesforce.",
-    status: "disponible",
-  },
-  {
-    id: "mkt-clearbit",
-    name: "Clearbit Enrichment",
-    category: "Enriquecimiento",
-    description: "Datos firmográficos y technographics en tiempo real.",
-    status: "proximamente",
-  },
-  {
-    id: "mkt-apollo",
-    name: "Apollo.io",
-    category: "Enriquecimiento",
-    description: "Base de contactos B2B y señales de intent.",
-    status: "solicitar",
-  },
-  {
-    id: "mkt-neverbounce",
-    name: "NeverBounce",
-    category: "Email",
-    description: "Validación enterprise de correos electrónicos.",
-    status: "disponible",
-  },
-  {
-    id: "mkt-instantly",
-    name: "Instantly.ai",
-    category: "Email",
-    description: "Cold email a escala con warmup de dominios.",
-    status: "disponible",
-  },
-  {
-    id: "mkt-zapier",
-    name: "Zapier",
-    category: "Automatización",
-    description: "Conecte miles de apps sin código.",
-    status: "proximamente",
-  },
-  {
-    id: "mkt-n8n",
-    name: "n8n Workflows",
-    category: "Automatización",
-    description: "Automatizaciones open-source para ops comerciales.",
-    status: "solicitar",
-  },
-  {
-    id: "mkt-apify",
-    name: "Apify Actors",
-    category: "Datos",
-    description: "Scraping LinkedIn y fuentes B2B a escala.",
-    status: "disponible",
-  },
-  {
-    id: "mkt-clay",
-    name: "Clay",
-    category: "Datos",
-    description: "Orquestación de datos para GTM teams.",
-    status: "proximamente",
-  },
-  {
-    id: "mkt-gpt",
-    name: "OpenAI GPT Suite",
-    category: "IA",
-    description: "Generación de copy, insights y scoring con GPT.",
-    status: "disponible",
-  },
-  {
-    id: "mkt-perplexity",
-    name: "Perplexity Research",
-    category: "IA",
-    description: "Research comercial con fuentes actualizadas.",
-    status: "disponible",
   },
 ];
 
