@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useAppStore } from "@/stores/app-store";
+import { useEnterpriseStore } from "@/stores/enterprise-store";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Topbar } from "@/components/layout/topbar";
 import { cn } from "@/lib/utils";
@@ -9,6 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const collapsed = useAppStore((s) => s.sidebarCollapsed);
+  const presentationMode = useEnterpriseStore((s) => s.presentationMode);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -31,14 +33,22 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     );
   }
 
+  const sideCollapsed = collapsed || presentationMode;
+
   return (
-    <div className="min-h-screen bg-[#F5F7FA]">
+    <div
+      className={cn(
+        "min-h-screen bg-[#F5F7FA] transition-all",
+        presentationMode && "presentation-mode text-[15px]"
+      )}
+    >
       <Sidebar />
       <Topbar />
       <main
         className={cn(
           "min-h-[calc(100vh-4rem)] p-6 transition-all duration-300",
-          collapsed ? "ml-[72px]" : "ml-[260px]"
+          sideCollapsed ? "ml-[72px]" : "ml-[260px]",
+          presentationMode && "p-8 md:p-10"
         )}
       >
         {children}

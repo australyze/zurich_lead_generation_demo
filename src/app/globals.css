@@ -76,3 +76,13 @@ body {
 .data-\[state\=closed\]\:slide-out-to-right[data-state="closed"] {
   animation: slide-out-to-right 0.2s ease-in;
 }
+
+/* Modo presentación ejecutivo */
+.presentation-mode h1 {
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+.presentation-mode .recharts-wrapper {
+  filter: contrast(1.05);
+}
