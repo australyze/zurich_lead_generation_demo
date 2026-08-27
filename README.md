@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zurich Lead Intelligence Platform
 
-## Getting Started
+Demo ejecutiva enterprise para Zurich — prospección, validación de emails, enriquecimiento, campañas e Instantly.
 
-First, run the development server:
+## Stack
+
+- Next.js 15 (App Router) + TypeScript
+- Tailwind CSS 4
+- shadcn/ui (Radix) + Lucide
+- Zustand (persistencia mock en localStorage)
+- TanStack React Query
+- Recharts + Framer Motion + Sonner
+
+## Arranque local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) — redirige a `/dashboard`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Módulos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Ruta | Descripción |
+|------|-------------|
+| `/dashboard` | KPIs, funnel, tendencia y actividad |
+| `/prospection` | Actor Apify simulado + tabla de leads |
+| `/correos` | Estados de email, filtros y búsqueda |
+| `/enriquecimiento` | Perfiles CRM con panel lateral |
+| `/campanas` | Secuencias de 4 correos editables |
+| `/instantly` | Campañas operacionales y métricas |
+| `/crm` | Tarjetas de integración CRM |
+| `/marketplace` | Catálogo de integraciones futuras |
+| `/configuracion` | Selector de proveedor de IA |
 
-## Learn More
+## Datos mock
 
-To learn more about Next.js, take a look at the following resources:
+- 100 leads consistentes entre módulos
+- ~70 correos encontrados / ~55 validados / 40 enriquecidos / 25 campañas / 12 activas
+- Persistencia local vía Zustand (`zurich-lip-storage`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Branding
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Zurich Blue `#0066CC` · Dark Blue `#003366` · Light Blue `#EAF4FF` · Neutral `#F5F7FA` · Inter
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Sin logo. Sin integraciones reales.
