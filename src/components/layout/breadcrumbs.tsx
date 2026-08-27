@@ -24,7 +24,6 @@ const LABELS: Record<string, string> = {
   logs: "Logs",
   "modelos-ia": "Modelos IA",
   administracion: "Administración",
-  "casos-uso": "Casos de Uso",
   prospection: "Prospección",
   correos: "Correos",
   configuracion: "Configuración",

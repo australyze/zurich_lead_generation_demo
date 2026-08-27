@@ -34,7 +34,6 @@ Abra [http://localhost:3000](http://localhost:3000) — redirige a `/dashboard`.
 | `/campanas` | Secuencias de 4 correos editables |
 | `/crm` | Tarjetas de integración CRM |
 | `/modelos-ia` | Comparativa y selector de modelos |
-| `/casos-uso` | Escenarios comerciales |
 | `/administracion` | Organización, equipos y roles |
 | `/configuracion` | Perfil, seguridad y preferencias de usuario |
 
