@@ -3,7 +3,6 @@ import type {
   AiProvider,
   Campaign,
   CrmIntegration,
-  InstantlyCampaign,
   KpiStats,
   Lead,
 } from "./types";
@@ -272,111 +271,13 @@ export function generateCampaigns(leads: Lead[]): Campaign[] {
     });
 }
 
-export function generateInstantlyCampaigns(): InstantlyCampaign[] {
-  return [
-    {
-      id: "ins-001",
-      name: "Outbound Banca Q3",
-      leadCount: 8,
-      status: "activa",
-      openRate: 48.2,
-      replyRate: 12.5,
-      positiveReplies: 6,
-      negativeReplies: 2,
-      bounceRate: 1.8,
-      activatedAt: daysAgo(12),
-    },
-    {
-      id: "ins-002",
-      name: "Retail Decision Makers",
-      leadCount: 6,
-      status: "activa",
-      openRate: 52.1,
-      replyRate: 14.2,
-      positiveReplies: 5,
-      negativeReplies: 1,
-      bounceRate: 2.1,
-      activatedAt: daysAgo(8),
-    },
-    {
-      id: "ins-003",
-      name: "Minería & Energía LatAm",
-      leadCount: 5,
-      status: "programada",
-      openRate: 0,
-      replyRate: 0,
-      positiveReplies: 0,
-      negativeReplies: 0,
-      bounceRate: 0,
-      scheduledAt: daysAgo(-2),
-    },
-    {
-      id: "ins-004",
-      name: "Telecom Growth Wave",
-      leadCount: 4,
-      status: "enviada",
-      openRate: 41.0,
-      replyRate: 9.8,
-      positiveReplies: 2,
-      negativeReplies: 1,
-      bounceRate: 3.2,
-      activatedAt: daysAgo(3),
-    },
-    {
-      id: "ins-005",
-      name: "SaaS Buyers Chile",
-      leadCount: 7,
-      status: "pausada",
-      openRate: 39.4,
-      replyRate: 8.1,
-      positiveReplies: 3,
-      negativeReplies: 2,
-      bounceRate: 2.5,
-      activatedAt: daysAgo(18),
-    },
-    {
-      id: "ins-006",
-      name: "C-Level Outreach Agosto",
-      leadCount: 3,
-      status: "pendiente_envio",
-      openRate: 0,
-      replyRate: 0,
-      positiveReplies: 0,
-      negativeReplies: 0,
-      bounceRate: 0,
-    },
-    {
-      id: "ins-007",
-      name: "Consultoría & Servicios",
-      leadCount: 5,
-      status: "finalizada",
-      openRate: 55.6,
-      replyRate: 16.4,
-      positiveReplies: 7,
-      negativeReplies: 3,
-      bounceRate: 1.2,
-      activatedAt: daysAgo(40),
-    },
-    {
-      id: "ins-008",
-      name: "Healthcare Decision Makers",
-      leadCount: 4,
-      status: "activa",
-      openRate: 46.8,
-      replyRate: 11.0,
-      positiveReplies: 4,
-      negativeReplies: 1,
-      bounceRate: 1.5,
-      activatedAt: daysAgo(6),
-    },
-  ];
-}
+const KPI_BASELINE = {
+  campanasActivadas: 12,
+  respuestasPositivas: 23,
+  respuestasNegativas: 9,
+};
 
-export function computeKpis(
-  leads: Lead[],
-  campaigns: Campaign[],
-  instantly: InstantlyCampaign[]
-): KpiStats {
+export function computeKpis(leads: Lead[], campaigns: Campaign[]): KpiStats {
   const correosEncontrados = leads.filter((l) =>
     ["encontrado", "validado", "riesgoso", "neverbounce", "listo"].includes(l.emailStatus)
   ).length;
@@ -385,11 +286,12 @@ export function computeKpis(
   ).length;
   const leadsEnriquecidos = leads.filter((l) => l.enriquecido).length;
   const campanasGeneradas = campaigns.length;
-  const campanasActivadas = instantly.filter((c) =>
-    ["activa", "enviada", "pausada", "finalizada"].includes(c.status)
-  ).length;
-  const respuestasPositivas = instantly.reduce((a, c) => a + c.positiveReplies, 0);
-  const respuestasNegativas = instantly.reduce((a, c) => a + c.negativeReplies, 0);
+  const campanasActivadas = Math.max(
+    campaigns.filter((c) => c.approved).length,
+    KPI_BASELINE.campanasActivadas
+  );
+  const respuestasPositivas = KPI_BASELINE.respuestasPositivas;
+  const respuestasNegativas = KPI_BASELINE.respuestasNegativas;
 
   return {
     leadsEncontrados: leads.length,
@@ -430,12 +332,12 @@ export function generateActivity(leads: Lead[]): ActivityItem[] {
       id: "act-4",
       type: "campaign",
       title: "Secuencia aprobada",
-      description: `Campaña de ${leads[1].nombre} lista para Instantly.`,
+      description: `Campaña de ${leads[1].nombre} lista para activación.`,
       timestamp: daysAgo(1),
     },
     {
       id: "act-5",
-      type: "instantly",
+      type: "campaign",
       title: "Campaña activada",
       description: "Outbound Banca Q3 entró en estado Activa.",
       timestamp: daysAgo(2),

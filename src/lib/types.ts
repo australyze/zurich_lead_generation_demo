@@ -12,14 +12,6 @@ export type EmailStatus =
 
 export type CampaignEmailStatus = "borrador" | "guardado" | "aprobado";
 
-export type InstantlyStatus =
-  | "pendiente_envio"
-  | "programada"
-  | "enviada"
-  | "activa"
-  | "pausada"
-  | "finalizada";
-
 export type CrmStatus = "conectado" | "desconectado" | "proximamente";
 
 export type CommercialPriority = "alta" | "media" | "baja";
@@ -68,23 +60,9 @@ export interface Campaign {
   createdAt: string;
 }
 
-export interface InstantlyCampaign {
-  id: string;
-  name: string;
-  leadCount: number;
-  status: InstantlyStatus;
-  openRate: number;
-  replyRate: number;
-  positiveReplies: number;
-  negativeReplies: number;
-  bounceRate: number;
-  scheduledAt?: string;
-  activatedAt?: string;
-}
-
 export interface ActivityItem {
   id: string;
-  type: "prospection" | "email" | "enrichment" | "campaign" | "instantly" | "crm";
+  type: "prospection" | "email" | "enrichment" | "campaign" | "crm";
   title: string;
   description: string;
   timestamp: string;

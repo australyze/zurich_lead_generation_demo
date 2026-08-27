@@ -10,14 +10,12 @@ import {
   computeKpis,
   generateActivity,
   generateCampaigns,
-  generateInstantlyCampaigns,
   generateLeads,
 } from "@/lib/mock-data";
 import type {
   Campaign,
   CampaignEmailStatus,
   CrmIntegration,
-  InstantlyCampaign,
   Lead,
   ProspectingConfig,
   ProspectingJob,
@@ -25,12 +23,10 @@ import type {
 
 const initialLeads = generateLeads();
 const initialCampaigns = generateCampaigns(initialLeads);
-const initialInstantly = generateInstantlyCampaigns();
 
 interface AppState {
   leads: Lead[];
   campaigns: Campaign[];
-  instantlyCampaigns: InstantlyCampaign[];
   crmIntegrations: CrmIntegration[];
   aiProviders: typeof AI_PROVIDERS;
   selectedAiProvider: string;
@@ -57,7 +53,6 @@ interface AppState {
     data: Partial<{ subject: string; body: string; status: CampaignEmailStatus }>
   ) => void;
   approveCampaign: (campaignId: string) => void;
-  updateInstantlyStatus: (id: string, status: InstantlyCampaign["status"]) => void;
   requestCrmIntegration: (id: string) => void;
   getKpis: () => ReturnType<typeof computeKpis>;
   getActivity: () => ReturnType<typeof generateActivity>;
@@ -68,7 +63,6 @@ export const useAppStore = create<AppState>()(
     (set, get) => ({
       leads: initialLeads,
       campaigns: initialCampaigns,
-      instantlyCampaigns: initialInstantly,
       crmIntegrations: CRM_INTEGRATIONS,
       aiProviders: AI_PROVIDERS,
       selectedAiProvider: "gpt-5",
@@ -194,13 +188,6 @@ export const useAppStore = create<AppState>()(
           ),
         })),
 
-      updateInstantlyStatus: (id, status) =>
-        set((state) => ({
-          instantlyCampaigns: state.instantlyCampaigns.map((c) =>
-            c.id === id ? { ...c, status } : c
-          ),
-        })),
-
       requestCrmIntegration: (id) =>
         set((state) => ({
           requestedIntegrations: state.requestedIntegrations.includes(id)
@@ -213,7 +200,7 @@ export const useAppStore = create<AppState>()(
           ),
         })),
 
-      getKpis: () => computeKpis(get().leads, get().campaigns, get().instantlyCampaigns),
+      getKpis: () => computeKpis(get().leads, get().campaigns),
       getActivity: () => generateActivity(get().leads),
     }),
     {
@@ -221,7 +208,6 @@ export const useAppStore = create<AppState>()(
       partialize: (state) => ({
         leads: state.leads,
         campaigns: state.campaigns,
-        instantlyCampaigns: state.instantlyCampaigns,
         selectedAiProvider: state.selectedAiProvider,
         requestedIntegrations: state.requestedIntegrations,
         crmIntegrations: state.crmIntegrations,

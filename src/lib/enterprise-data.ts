@@ -49,7 +49,7 @@ export const NOTIFICATIONS: NotificationItem[] = [
 export const SEARCH_INDEX: SearchResult[] = [
   { id: "s1", type: "Lead", title: "María González", subtitle: "Falabella · Gerente Comercial", href: "/enriquecimiento" },
   { id: "s2", type: "Lead", title: "Carlos Muñoz", subtitle: "Banco Estado · Director de Ventas", href: "/correos" },
-  { id: "s3", type: "Campaña", title: "Outbound Banca Q3", subtitle: "Activa · Open Rate 52%", href: "/instantly" },
+  { id: "s3", type: "Campaña", title: "Outbound Banca Q3", subtitle: "Activa · Open Rate 52%", href: "/campanas" },
   { id: "s4", type: "Campaña", title: "Retail Decision Makers", subtitle: "Activa · 36 leads", href: "/campanas" },
   { id: "s5", type: "Empresa", title: "Falabella", subtitle: "Retail · URL detectada", href: "/operaciones/url-empresa" },
   { id: "s6", type: "Empresa", title: "Codelco", subtitle: "Minería · URL pendiente", href: "/operaciones/url-empresa" },

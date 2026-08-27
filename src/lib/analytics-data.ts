@@ -178,7 +178,7 @@ export function getOpsAlerts(filters: GlobalFilters): OpsAlert[] {
     { id: "a1", severity: "alta", title: "Correos requieren validación NeverBounce", description: "Pendientes en cola de validación enterprise.", count: clamp(15 * Math.max(f, 0.4)), actionLabel: "Revisar correos" },
     { id: "a2", severity: "media", title: "Campañas esperan aprobación", description: "Secuencias listas sin firma comercial.", count: clamp(7 * Math.max(f, 0.4)), actionLabel: "Ir a campañas" },
     { id: "a3", severity: "alta", title: "Leads sin URL corporativa", description: "Bloquean el descubrimiento de email.", count: clamp(12 * Math.max(f, 0.4)), actionLabel: "Ver leads" },
-    { id: "a4", severity: "critica", title: "Campañas con alto bounce rate", description: "Supera el umbral del 5% — revisar dominios.", count: clamp(3 * Math.max(f, 0.5)), actionLabel: "Ver Instantly" },
+    { id: "a4", severity: "critica", title: "Campañas con alto bounce rate", description: "Supera el umbral del 5% — revisar dominios.", count: clamp(3 * Math.max(f, 0.5)), actionLabel: "Ver campañas" },
     { id: "a5", severity: "info", title: "Respuestas sin clasificar", description: "Clasificación automática pendiente de revisión.", count: clamp(9 * Math.max(f, 0.4)), actionLabel: "Clasificar" },
   ];
 }
