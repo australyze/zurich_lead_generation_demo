@@ -2,7 +2,6 @@ import { Badge } from "@/components/ui/badge";
 import type {
   CrmStatus,
   EmailStatus,
-  InstantlyStatus,
   ProspectingStatus,
   CommercialPriority,
   CampaignEmailStatus,
@@ -24,15 +23,6 @@ const PROSPECT_MAP: Record<ProspectingStatus, { label: string; variant: "default
   ejecutando: { label: "Ejecutando", variant: "info" },
   completado: { label: "Completado", variant: "success" },
   error: { label: "Error", variant: "danger" },
-};
-
-const INSTANTLY_MAP: Record<InstantlyStatus, { label: string; variant: "default" | "secondary" | "success" | "warning" | "danger" | "outline" | "info" }> = {
-  pendiente_envio: { label: "Pendiente envío", variant: "outline" },
-  programada: { label: "Programada", variant: "info" },
-  enviada: { label: "Enviada", variant: "secondary" },
-  activa: { label: "Activa", variant: "success" },
-  pausada: { label: "Pausada", variant: "warning" },
-  finalizada: { label: "Finalizada", variant: "default" },
 };
 
 const CRM_MAP: Record<CrmStatus, { label: string; variant: "default" | "secondary" | "success" | "warning" | "danger" | "outline" | "info" }> = {
@@ -60,11 +50,6 @@ export function EmailStatusBadge({ status }: { status: EmailStatus }) {
 
 export function ProspectStatusBadge({ status }: { status: ProspectingStatus }) {
   const m = PROSPECT_MAP[status];
-  return <Badge variant={m.variant}>{m.label}</Badge>;
-}
-
-export function InstantlyStatusBadge({ status }: { status: InstantlyStatus }) {
-  const m = INSTANTLY_MAP[status];
   return <Badge variant={m.variant}>{m.label}</Badge>;
 }
 

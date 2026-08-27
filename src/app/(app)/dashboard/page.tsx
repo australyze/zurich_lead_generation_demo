@@ -40,7 +40,7 @@ export default function DashboardPage() {
       a1: "/correos",
       a2: "/campanas",
       a3: "/prospection",
-      a4: "/instantly",
+      a4: "/campanas",
       a5: "/analitica",
     };
     toast.message(alert.title, { description: `Navegando a ${alert.actionLabel}…` });

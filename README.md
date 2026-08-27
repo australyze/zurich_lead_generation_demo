@@ -1,6 +1,6 @@
 # Zurich Lead Intelligence Platform
 
-Demo ejecutiva enterprise para Zurich — prospección, validación de emails, enriquecimiento, campañas e Instantly.
+Demo ejecutiva enterprise para Zurich — prospección, validación de emails, enriquecimiento y campañas.
 
 ## Stack
 
@@ -32,7 +32,6 @@ Abra [http://localhost:3000](http://localhost:3000) — redirige a `/dashboard`.
 | `/correos` | Estados de email, filtros y búsqueda |
 | `/enriquecimiento` | Perfiles CRM con panel lateral |
 | `/campanas` | Secuencias de 4 correos editables |
-| `/instantly` | Campañas operacionales y métricas |
 | `/crm` | Tarjetas de integración CRM |
 | `/modelos-ia` | Comparativa y selector de modelos |
 | `/casos-uso` | Escenarios comerciales |
