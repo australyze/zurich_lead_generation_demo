@@ -79,7 +79,7 @@ export default function ImpactoPage() {
         />
         <Insight
           title="Escalabilidad"
-          body="El mismo stack puede crecer vía Centro de Integraciones y múltiples modelos de IA sin rehacer el proceso."
+          body="El mismo stack puede crecer vía CRM, múltiples modelos de IA y nuevos conectores sin rehacer el proceso."
         />
       </div>
     </div>

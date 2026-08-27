@@ -6,7 +6,6 @@ import {
   AI_PROVIDERS,
   CRM_INTEGRATIONS,
   FUNNEL_DATA,
-  MARKETPLACE_ITEMS,
   WEEKLY_TREND,
   computeKpis,
   generateActivity,
@@ -33,7 +32,6 @@ interface AppState {
   campaigns: Campaign[];
   instantlyCampaigns: InstantlyCampaign[];
   crmIntegrations: CrmIntegration[];
-  marketplaceItems: typeof MARKETPLACE_ITEMS;
   aiProviders: typeof AI_PROVIDERS;
   selectedAiProvider: string;
   prospectingJob: ProspectingJob | null;
@@ -61,7 +59,6 @@ interface AppState {
   approveCampaign: (campaignId: string) => void;
   updateInstantlyStatus: (id: string, status: InstantlyCampaign["status"]) => void;
   requestCrmIntegration: (id: string) => void;
-  requestMarketplaceItem: (id: string) => void;
   getKpis: () => ReturnType<typeof computeKpis>;
   getActivity: () => ReturnType<typeof generateActivity>;
 }
@@ -73,7 +70,6 @@ export const useAppStore = create<AppState>()(
       campaigns: initialCampaigns,
       instantlyCampaigns: initialInstantly,
       crmIntegrations: CRM_INTEGRATIONS,
-      marketplaceItems: MARKETPLACE_ITEMS,
       aiProviders: AI_PROVIDERS,
       selectedAiProvider: "gpt-5",
       prospectingJob: null,
@@ -215,13 +211,6 @@ export const useAppStore = create<AppState>()(
               ? { ...c, status: "proximamente" as const }
               : c
           ),
-        })),
-
-      requestMarketplaceItem: (id) =>
-        set((state) => ({
-          requestedIntegrations: state.requestedIntegrations.includes(id)
-            ? state.requestedIntegrations
-            : [...state.requestedIntegrations, id],
         })),
 
       getKpis: () => computeKpis(get().leads, get().campaigns, get().instantlyCampaigns),

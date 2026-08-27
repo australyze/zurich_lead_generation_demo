@@ -3,7 +3,6 @@ import type {
   CrmStatus,
   EmailStatus,
   InstantlyStatus,
-  MarketplaceStatus,
   ProspectingStatus,
   CommercialPriority,
   CampaignEmailStatus,
@@ -42,12 +41,6 @@ const CRM_MAP: Record<CrmStatus, { label: string; variant: "default" | "secondar
   proximamente: { label: "Próximamente", variant: "info" },
 };
 
-const MKT_MAP: Record<MarketplaceStatus, { label: string; variant: "default" | "secondary" | "success" | "warning" | "danger" | "outline" | "info" }> = {
-  disponible: { label: "Disponible", variant: "success" },
-  proximamente: { label: "Próximamente", variant: "info" },
-  solicitar: { label: "Solicitar", variant: "warning" },
-};
-
 const PRIORITY_MAP: Record<CommercialPriority, { label: string; variant: "default" | "secondary" | "success" | "warning" | "danger" | "outline" | "info" }> = {
   alta: { label: "Alta", variant: "danger" },
   media: { label: "Media", variant: "warning" },
@@ -77,11 +70,6 @@ export function InstantlyStatusBadge({ status }: { status: InstantlyStatus }) {
 
 export function CrmStatusBadge({ status }: { status: CrmStatus }) {
   const m = CRM_MAP[status];
-  return <Badge variant={m.variant}>{m.label}</Badge>;
-}
-
-export function MarketplaceStatusBadge({ status }: { status: MarketplaceStatus }) {
-  const m = MKT_MAP[status];
   return <Badge variant={m.variant}>{m.label}</Badge>;
 }
 

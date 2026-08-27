@@ -22,13 +22,11 @@ const LABELS: Record<string, string> = {
   crm: "CRM",
   consumo: "Consumo",
   logs: "Logs",
-  integraciones: "Centro de Integraciones",
   "modelos-ia": "Modelos IA",
   administracion: "Administración",
   "casos-uso": "Casos de Uso",
   prospection: "Prospección",
   correos: "Correos",
-  marketplace: "Marketplace",
   configuracion: "Configuración",
 };
 

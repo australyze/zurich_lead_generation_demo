@@ -1,37 +1,3 @@
-export type IntegrationCategory =
-  | "CRM"
-  | "Marketing"
-  | "Prospección"
-  | "Enriquecimiento"
-  | "Email"
-  | "IA"
-  | "Analytics"
-  | "Comunicación";
-
-export type IntegrationAvailability = "disponible" | "proximamente" | "solicitar";
-
-export type RequestStatus = "Nueva" | "En Evaluación" | "Aprobada" | "En Desarrollo" | "Disponible";
-
-export type RequestPriority = "Alta" | "Media" | "Baja";
-
-export interface IntegrationCard {
-  id: string;
-  name: string;
-  category: IntegrationCategory;
-  description: string;
-  status: IntegrationAvailability;
-  initials: string;
-}
-
-export interface IntegrationRequest {
-  id: string;
-  solicitud: string;
-  fecha: string;
-  solicitante: string;
-  estado: RequestStatus;
-  prioridad: RequestPriority;
-}
-
 export interface AiModelRow {
   id: string;
   proveedor: string;
@@ -80,7 +46,7 @@ export interface NotificationItem {
 
 export interface SearchResult {
   id: string;
-  type: "Lead" | "Campaña" | "Empresa" | "Integración";
+  type: "Lead" | "Campaña" | "Empresa" | "CRM";
   title: string;
   subtitle: string;
   href: string;

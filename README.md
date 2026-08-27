@@ -24,15 +24,20 @@ Abra [http://localhost:3000](http://localhost:3000) — redirige a `/dashboard`.
 
 | Ruta | Descripción |
 |------|-------------|
-| `/dashboard` | KPIs, funnel, tendencia y actividad |
+| `/dashboard` | KPIs, funnel, scorecard y actividad |
+| `/analitica` | Reportería avanzada |
+| `/impacto` | Impacto comercial estimado |
+| `/operaciones` | Mission Control del pipeline |
 | `/prospection` | Actor Apify simulado + tabla de leads |
 | `/correos` | Estados de email, filtros y búsqueda |
 | `/enriquecimiento` | Perfiles CRM con panel lateral |
 | `/campanas` | Secuencias de 4 correos editables |
 | `/instantly` | Campañas operacionales y métricas |
 | `/crm` | Tarjetas de integración CRM |
-| `/marketplace` | Catálogo de integraciones futuras |
-| `/configuracion` | Selector de proveedor de IA |
+| `/modelos-ia` | Comparativa y selector de modelos |
+| `/casos-uso` | Escenarios comerciales |
+| `/administracion` | Organización, equipos y roles |
+| `/configuracion` | Preferencias generales |
 
 ## Datos mock
 

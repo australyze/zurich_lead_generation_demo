@@ -2,12 +2,8 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import {
-  AI_MODELS,
-  INTEGRATION_REQUESTS,
-  NOTIFICATIONS,
-} from "@/lib/enterprise-data";
-import type { IntegrationRequest, NotificationItem, RequestPriority } from "@/lib/enterprise-types";
+import { AI_MODELS, NOTIFICATIONS } from "@/lib/enterprise-data";
+import type { NotificationItem } from "@/lib/enterprise-types";
 
 interface EnterpriseState {
   enrichmentModelId: string;
@@ -16,7 +12,6 @@ interface EnterpriseState {
   tourActive: boolean;
   tourStepIndex: number;
   notifications: NotificationItem[];
-  integrationRequests: IntegrationRequest[];
   searchOpen: boolean;
   notificationsOpen: boolean;
 
@@ -29,12 +24,6 @@ interface EnterpriseState {
   setSearchOpen: (v: boolean) => void;
   setNotificationsOpen: (v: boolean) => void;
   markNotificationsRead: () => void;
-  addIntegrationRequest: (payload: {
-    solicitud: string;
-    justificacion: string;
-    impacto: string;
-    prioridad: RequestPriority;
-  }) => void;
 }
 
 export const useEnterpriseStore = create<EnterpriseState>()(
@@ -46,7 +35,6 @@ export const useEnterpriseStore = create<EnterpriseState>()(
       tourActive: false,
       tourStepIndex: 0,
       notifications: NOTIFICATIONS,
-      integrationRequests: INTEGRATION_REQUESTS,
       searchOpen: false,
       notificationsOpen: false,
 
@@ -71,32 +59,6 @@ export const useEnterpriseStore = create<EnterpriseState>()(
         set((s) => ({
           notifications: s.notifications.map((n) => ({ ...n, read: true })),
         })),
-
-      addIntegrationRequest: ({ solicitud, prioridad }) =>
-        set((s) => ({
-          integrationRequests: [
-            {
-              id: `REQ-${String(15 + s.integrationRequests.length).padStart(3, "0")}`,
-              solicitud,
-              fecha: new Date().toISOString(),
-              solicitante: "Gerente Comercial",
-              estado: "Nueva",
-              prioridad,
-            },
-            ...s.integrationRequests,
-          ],
-          notifications: [
-            {
-              id: `n-${Date.now()}`,
-              title: "Solicitud de integración creada",
-              description: `${solicitud} registrada para evaluación.`,
-              time: "Ahora",
-              read: false,
-              href: "/integraciones",
-            },
-            ...s.notifications,
-          ],
-        })),
     }),
     {
       name: "zurich-enterprise-storage",
@@ -104,7 +66,6 @@ export const useEnterpriseStore = create<EnterpriseState>()(
         enrichmentModelId: s.enrichmentModelId,
         campaignModelId: s.campaignModelId,
         presentationMode: s.presentationMode,
-        integrationRequests: s.integrationRequests,
       }),
     }
   )
