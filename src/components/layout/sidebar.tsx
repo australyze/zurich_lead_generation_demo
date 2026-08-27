@@ -17,15 +17,22 @@ import {
   ChevronRight,
   BarChart3,
   Radar,
+  Blocks,
+  Brain,
+  Building2,
+  TrendingUp,
+  BookOpen,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAppStore } from "@/stores/app-store";
+import { useEnterpriseStore } from "@/stores/enterprise-store";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/analitica", label: "Analítica", icon: BarChart3 },
+  { href: "/impacto", label: "Impacto Comercial", icon: TrendingUp },
   { href: "/operaciones", label: "Centro de Operaciones", icon: Radar },
   { href: "/prospection", label: "Prospección", icon: Search },
   { href: "/correos", label: "Correos", icon: Mail },
@@ -33,14 +40,20 @@ const NAV = [
   { href: "/campanas", label: "Campañas", icon: Megaphone },
   { href: "/instantly", label: "Instantly", icon: Zap },
   { href: "/crm", label: "CRM", icon: Network },
+  { href: "/integraciones", label: "Centro de Integraciones", icon: Blocks },
   { href: "/marketplace", label: "Marketplace", icon: Store },
+  { href: "/modelos-ia", label: "Modelos IA", icon: Brain },
+  { href: "/casos-uso", label: "Casos de Uso", icon: BookOpen },
+  { href: "/administracion", label: "Administración", icon: Building2 },
   { href: "/configuracion", label: "Configuración", icon: Settings },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
-  const collapsed = useAppStore((s) => s.sidebarCollapsed);
+  const collapsedStore = useAppStore((s) => s.sidebarCollapsed);
   const setCollapsed = useAppStore((s) => s.setSidebarCollapsed);
+  const presentationMode = useEnterpriseStore((s) => s.presentationMode);
+  const collapsed = collapsedStore || presentationMode;
 
   return (
     <aside
@@ -81,8 +94,8 @@ export function Sidebar() {
                   className="absolute left-0 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r bg-[#4da3ff]"
                 />
               )}
-              <Icon className="h-4.5 w-4.5 shrink-0" size={18} />
-              {!collapsed && <span>{item.label}</span>}
+              <Icon className="shrink-0" size={18} />
+              {!collapsed && <span className="truncate">{item.label}</span>}
             </Link>
           );
 
@@ -98,21 +111,23 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="border-t border-white/10 p-3">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setCollapsed(!collapsed)}
-          className="w-full justify-center text-white/70 hover:bg-white/10 hover:text-white"
-        >
-          {collapsed ? <ChevronRight size={16} /> : (
-            <>
-              <ChevronLeft size={16} />
-              <span>Colapsar</span>
-            </>
-          )}
-        </Button>
-      </div>
+      {!presentationMode && (
+        <div className="border-t border-white/10 p-3">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setCollapsed(!collapsedStore)}
+            className="w-full justify-center text-white/70 hover:bg-white/10 hover:text-white"
+          >
+            {collapsedStore ? <ChevronRight size={16} /> : (
+              <>
+                <ChevronLeft size={16} />
+                <span>Colapsar</span>
+              </>
+            )}
+          </Button>
+        </div>
+      )}
     </aside>
   );
 }

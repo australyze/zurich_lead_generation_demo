@@ -7,6 +7,7 @@ import { ChevronRight, Home } from "lucide-react";
 const LABELS: Record<string, string> = {
   dashboard: "Dashboard",
   analitica: "Analítica",
+  impacto: "Impacto Comercial",
   operaciones: "Centro de Operaciones",
   apify: "Apify",
   "url-empresa": "URL Empresa",
@@ -21,6 +22,10 @@ const LABELS: Record<string, string> = {
   crm: "CRM",
   consumo: "Consumo",
   logs: "Logs",
+  integraciones: "Centro de Integraciones",
+  "modelos-ia": "Modelos IA",
+  administracion: "Administración",
+  "casos-uso": "Casos de Uso",
   prospection: "Prospección",
   correos: "Correos",
   marketplace: "Marketplace",
