@@ -47,4 +47,4 @@ Abra [http://localhost:3000](http://localhost:3000) — redirige a `/dashboard`.
 
 Zurich Blue `#0066CC` · Dark Blue `#003366` · Light Blue `#EAF4FF` · Neutral `#F5F7FA` · Inter
 
-Sin logo. Sin integraciones reales.
+Sin integraciones reales.
