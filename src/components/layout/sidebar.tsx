@@ -18,7 +18,6 @@ import {
   Brain,
   Building2,
   TrendingUp,
-  BookOpen,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAppStore } from "@/stores/app-store";
@@ -37,7 +36,6 @@ const NAV = [
   { href: "/campanas", label: "Campañas", icon: Megaphone },
   { href: "/crm", label: "CRM", icon: Network },
   { href: "/modelos-ia", label: "Modelos IA", icon: Brain },
-  { href: "/casos-uso", label: "Casos de Uso", icon: BookOpen },
   { href: "/administracion", label: "Administración", icon: Building2 },
   { href: "/configuracion", label: "Configuración", icon: Settings },
 ];

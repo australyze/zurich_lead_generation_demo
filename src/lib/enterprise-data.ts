@@ -7,7 +7,6 @@ import type {
   SearchResult,
   TeamRow,
   TourStep,
-  UseCaseCard,
 } from "./enterprise-types";
 
 export const AI_MODELS: AiModelRow[] = [
@@ -57,45 +56,6 @@ export const SEARCH_INDEX: SearchResult[] = [
   { id: "s8", type: "CRM", title: "Salesforce", subtitle: "Desconectado", href: "/crm" },
 ];
 
-export const USE_CASES: UseCaseCard[] = [
-  {
-    id: "uc1",
-    titulo: "Captación Empresas Logística",
-    descripcion: "Outbound a gerencias de operaciones y commercial directors en logística LatAm.",
-    leads: 180,
-    correos: 126,
-    campanas: 22,
-    resultados: ["14 reuniones", "9 oportunidades", "Pipeline USD 420K"],
-  },
-  {
-    id: "uc2",
-    titulo: "Captación Empresas Retail",
-    descripcion: "Prospección de retailers omnicanal con validación NeverBounce y copy GPT-5.",
-    leads: 240,
-    correos: 168,
-    campanas: 31,
-    resultados: ["21 reuniones", "12 oportunidades", "Pipeline USD 610K"],
-  },
-  {
-    id: "uc3",
-    titulo: "Captación Empresas Tecnología",
-    descripcion: "C-Level y Heads of Growth en SaaS y servicios TI.",
-    leads: 150,
-    correos: 112,
-    campanas: 18,
-    resultados: ["11 reuniones", "7 oportunidades", "Pipeline USD 380K"],
-  },
-  {
-    id: "uc4",
-    titulo: "Expansión Comercial Regional",
-    descripcion: "Campaña multi-país Chile–Perú–Colombia con scoring por prioridad.",
-    leads: 320,
-    correos: 224,
-    campanas: 40,
-    resultados: ["28 reuniones", "16 oportunidades", "Pipeline USD 890K"],
-  },
-];
-
 export const COMMERCIAL_IMPACT: CommercialImpact = {
   leadsMensuales: 1000,
   correosValidados: 550,
@@ -114,5 +74,5 @@ export const TOUR_STEPS: TourStep[] = [
   { id: "t4", route: "/campanas", title: "Campañas", description: "Secuencias de 4 correos con aprobación humana." },
   { id: "t5", route: "/analitica", title: "Reportería", description: "Analítica avanzada del performance comercial." },
   { id: "t6", route: "/crm", title: "CRM", description: "Integraciones con HubSpot, Salesforce y más." },
-  { id: "t7", route: "/casos-uso", title: "Casos de uso", description: "Escenarios comerciales listos para demostrar valor." },
+  { id: "t7", route: "/impacto", title: "Impacto comercial", description: "ROI estimado y valor del pipeline para la demo ejecutiva." },
 ];

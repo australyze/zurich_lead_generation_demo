@@ -52,16 +52,6 @@ export interface SearchResult {
   href: string;
 }
 
-export interface UseCaseCard {
-  id: string;
-  titulo: string;
-  descripcion: string;
-  leads: number;
-  correos: number;
-  campanas: number;
-  resultados: string[];
-}
-
 export interface CommercialImpact {
   leadsMensuales: number;
   correosValidados: number;
