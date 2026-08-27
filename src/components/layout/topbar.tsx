@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { useAppStore } from "@/stores/app-store";
 import { useEnterpriseStore } from "@/stores/enterprise-store";
+import { useSettingsStore } from "@/stores/settings-store";
 import { cn } from "@/lib/utils";
 import { GlobalSearch } from "@/components/enterprise/global-search";
 import { NotificationsCenter } from "@/components/enterprise/notifications-center";
@@ -18,6 +19,7 @@ export function Topbar() {
   const setPresentation = useEnterpriseStore((s) => s.setPresentationMode);
   const setSearchOpen = useEnterpriseStore((s) => s.setSearchOpen);
   const startTour = useEnterpriseStore((s) => s.startTour);
+  const profile = useSettingsStore((s) => s.profile);
 
   return (
     <>
@@ -79,11 +81,11 @@ export function Topbar() {
           {!presentationMode && (
             <div className="flex items-center gap-2 rounded-lg border border-[#e2e8f0] bg-[#F5F7FA] px-2.5 py-1.5">
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0066CC] text-xs font-semibold text-white">
-                GC
+                {profile.avatarInitials}
               </div>
               <div className="hidden lg:block">
-                <p className="text-xs font-semibold text-[#003366] leading-tight">Gerente Comercial</p>
-                <p className="text-[10px] text-[#64748b]">Zurich Demo</p>
+                <p className="text-xs font-semibold text-[#003366] leading-tight">{profile.cargo}</p>
+                <p className="text-[10px] text-[#64748b]">{profile.empresa}</p>
               </div>
             </div>
           )}

@@ -37,7 +37,7 @@ Abra [http://localhost:3000](http://localhost:3000) — redirige a `/dashboard`.
 | `/modelos-ia` | Comparativa y selector de modelos |
 | `/casos-uso` | Escenarios comerciales |
 | `/administracion` | Organización, equipos y roles |
-| `/configuracion` | Preferencias generales |
+| `/configuracion` | Perfil, seguridad y preferencias de usuario |
 
 ## Datos mock
 
