@@ -15,6 +15,7 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
+  BarChart3,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAppStore } from "@/stores/app-store";
@@ -23,6 +24,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/analitica", label: "Analítica", icon: BarChart3 },
   { href: "/prospection", label: "Prospección", icon: Search },
   { href: "/correos", label: "Correos", icon: Mail },
   { href: "/enriquecimiento", label: "Enriquecimiento", icon: Sparkles },
